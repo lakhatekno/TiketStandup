@@ -22,7 +22,7 @@ import java.util.Date;
 public class DataBookingDAOImpl implements DataBookingDAO{
     Connection con;
     private static String select = "SELECT * FROM `booking_data`";
-    private static String insert = "INSERT INTO `booking_data` (`id_booking_data`, `nama`, `no_hp`, `email`, `id_jadwal_show`, `id_tipe_kursi`) VALUES (?, ?, ?, ?, ?, ?)";
+    private static String insert = "INSERT INTO `booking_data` (`id_booking_data`, `nama`, `no_hp`, `email`, `id_jadwal_show`, `kursi_reguler`, `kursi_vip`) VALUES (?, ?, ?, ?, ?, ?, ?)";
     public DataBookingDAOImpl() {
         con = Connector.connection();
     }
@@ -37,7 +37,8 @@ public class DataBookingDAOImpl implements DataBookingDAO{
             statement.setString(3, d_b.getNoHp());
             statement.setString(4, d_b.getEmail());
             statement.setInt(5,d_b.getIdJadwalShow());
-            statement.setInt(6,d_b.getIdTipeKursi());
+            statement.setInt(6,d_b.getJmlReguler());
+            statement.setInt(7, d_b.getJmlVip());
             statement.executeUpdate();
             ResultSet rs = statement.getGeneratedKeys();
             while(rs.next()) {
@@ -78,7 +79,8 @@ public class DataBookingDAOImpl implements DataBookingDAO{
                 db.setEmail(rs.getString("email"));
                 db.setNoHp(rs.getString("no_hp"));
                 db.setIdJadwalShow(rs.getInt("id_jadwal_show"));
-                db.setIdTipeKursi(rs.getInt("id_tipe_kursi"));
+                db.setJmlReguler(rs.getInt("kursi_reguler"));
+                db.setJmlVip(rs.getInt("kursi_vip"));
                 d_b.add(db);
             }
         } catch(SQLException ex) {

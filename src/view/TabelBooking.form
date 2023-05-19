@@ -49,11 +49,15 @@
                       <Component id="TxtShow" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel5" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel5" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="jLabel6" min="-2" pref="37" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="submitBook" min="-2" max="-2" attributes="0"/>
-                          <Component id="TxtKursi" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="TxtReg" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="TxtVip" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -91,8 +95,13 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="TxtKursi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TxtReg" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="TxtVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="submitBook" min="-2" max="-2" attributes="0"/>
@@ -163,14 +172,14 @@
         <Property name="text" type="java.lang.String" value="Show"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="TxtKursi">
+    <Component class="javax.swing.JTextField" name="TxtReg">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtKursiActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtRegActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Kursi"/>
+        <Property name="text" type="java.lang.String" value="Reg"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="submitBook">
@@ -179,6 +188,16 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitBookActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="VIP"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TxtVip">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtVipActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

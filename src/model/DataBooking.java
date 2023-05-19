@@ -10,7 +10,7 @@ package model;
  */
 public class DataBooking {
     private String idBookingData, nama, email, noHp;
-    private int idJadwalShow, idTipeKursi;
+    private int idJadwalShow, jmlReguler, jmlVip;
 
     public String getIdBookingData() {
         return idBookingData;
@@ -52,14 +52,19 @@ public class DataBooking {
         this.idJadwalShow = idJadwalShow;
     }
 
-    public int getIdTipeKursi() {
-        return idTipeKursi;
+    public int getJmlReguler() {
+        return jmlReguler;
     }
 
-    public void setIdTipeKursi(int idTipeKursi) {
-        this.idTipeKursi = idTipeKursi;
+    public void setJmlReguler(int jmlReguler) {
+        this.jmlReguler = jmlReguler;
     }
-    
-    
-    
+
+    public int getJmlVip() {
+        return jmlVip;
+    }
+
+    public void setJmlVip(int jmlVip) {
+        this.jmlVip = jmlVip;
+    }
 }

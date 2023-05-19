@@ -43,9 +43,11 @@ public class TabelBooking extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         TxtShow = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        TxtKursi = new javax.swing.JTextField();
+        TxtReg = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         submitBook = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        TxtVip = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,18 +96,26 @@ public class TabelBooking extends javax.swing.JFrame {
 
         jLabel4.setText("Show");
 
-        TxtKursi.addActionListener(new java.awt.event.ActionListener() {
+        TxtReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtKursiActionPerformed(evt);
+                TxtRegActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Kursi");
+        jLabel5.setText("Reg");
 
         submitBook.setText("submit");
         submitBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitBookActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("VIP");
+
+        TxtVip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtVipActionPerformed(evt);
             }
         });
 
@@ -135,11 +145,14 @@ public class TabelBooking extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(TxtShow, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(submitBook)
-                            .addComponent(TxtKursi, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(TxtReg, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtVip, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
@@ -167,8 +180,12 @@ public class TabelBooking extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxtKursi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TxtVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(submitBook)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -193,15 +210,19 @@ public class TabelBooking extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtShowActionPerformed
 
-    private void TxtKursiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtKursiActionPerformed
+    private void TxtRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtRegActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtKursiActionPerformed
+    }//GEN-LAST:event_TxtRegActionPerformed
 
     private void submitBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBookActionPerformed
         // TODO add your handling code here:
         dbc.insert();
         dbc.isiTabel();
     }//GEN-LAST:event_submitBookActionPerformed
+
+    private void TxtVipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtVipActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtVipActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,15 +261,17 @@ public class TabelBooking extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TxtEmail;
-    private javax.swing.JTextField TxtKursi;
     private javax.swing.JTextField TxtNama;
     private javax.swing.JTextField TxtNoHp;
+    private javax.swing.JTextField TxtReg;
     private javax.swing.JTextField TxtShow;
+    private javax.swing.JTextField TxtVip;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton submitBook;
     private javax.swing.JTable tableBooking;
@@ -268,14 +291,6 @@ public class TabelBooking extends javax.swing.JFrame {
 
     public void setTxtEmail(JTextField TxtEmail) {
         this.TxtEmail = TxtEmail;
-    }
-
-    public JTextField getTxtKursi() {
-        return TxtKursi;
-    }
-
-    public void setTxtKursi(JTextField TxtKursi) {
-        this.TxtKursi = TxtKursi;
     }
 
     public JTextField getTxtNama() {
@@ -300,6 +315,22 @@ public class TabelBooking extends javax.swing.JFrame {
 
     public void setTxtShow(JTextField TxtShow) {
         this.TxtShow = TxtShow;
+    }
+
+    public JTextField getTxtReg() {
+        return TxtReg;
+    }
+
+    public void setTxtReg(JTextField TxtReg) {
+        this.TxtReg = TxtReg;
+    }
+
+    public JTextField getTxtVip() {
+        return TxtVip;
+    }
+
+    public void setTxtVip(JTextField TxtVip) {
+        this.TxtVip = TxtVip;
     }
     
     

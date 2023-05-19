@@ -25,7 +25,7 @@ public class ModelTabelBooking extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 6;
+        return 7;
     }
     
     @Override
@@ -42,7 +42,9 @@ public class ModelTabelBooking extends AbstractTableModel {
             case 4:
                 return "id_jadwal_show";
             case 5:
-                return "id_tipe_kursi";
+                return "kursi_reguler";
+            case 6:
+                return "kursi_vip";
             default:
                 return null;
         }
@@ -62,7 +64,9 @@ public class ModelTabelBooking extends AbstractTableModel {
             case 4:
                 return d_b.get(row).getIdJadwalShow();
             case 5:
-                return d_b.get(row).getIdTipeKursi();
+                return d_b.get(row).getJmlReguler();
+            case 6:
+                return d_b.get(row).getJmlVip();
             default:
                 return null;
         }

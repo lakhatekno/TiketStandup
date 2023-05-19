@@ -34,7 +34,8 @@ public class DataBookingController {
         db.setEmail(tabel.getTxtEmail().getText());
         db.setNoHp(tabel.getTxtNoHp().getText());
         db.setIdJadwalShow(Integer.parseInt(tabel.getTxtShow().getText()));
-        db.setIdTipeKursi(Integer.parseInt(tabel.getTxtKursi().getText()));
+        db.setJmlReguler(Integer.parseInt(tabel.getTxtReg().getText()));
+        db.setJmlVip(Integer.parseInt(tabel.getTxtVip().getText()));
         dataImpl.insert(db);
     }
 }
