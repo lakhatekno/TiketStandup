@@ -116,10 +116,10 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+                <StringItem index="0" value="1"/>
+                <StringItem index="1" value="2"/>
+                <StringItem index="2" value="3"/>
+                <StringItem index="3" value="4"/>
               </StringArray>
             </Property>
           </Properties>
@@ -358,6 +358,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="SpinVip">
+              <Properties>
+                <Property name="requestFocusEnabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -386,9 +389,9 @@
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                      <Component id="InNama1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="InEmail" alignment="0" max="32767" attributes="0"/>
                       <Component id="InNama" alignment="0" max="32767" attributes="0"/>
-                      <Component id="InNama2" alignment="0" min="-2" pref="377" max="-2" attributes="0"/>
+                      <Component id="InNoHp" alignment="0" min="-2" pref="377" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="17" max="32767" attributes="0"/>
               </Group>
@@ -404,11 +407,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="InNama1" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="InEmail" min="-2" pref="31" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="InNama2" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="InNoHp" min="-2" pref="31" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -430,9 +433,9 @@
             <Property name="text" type="java.lang.String" value="Email"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="InNama1">
+        <Component class="javax.swing.JTextField" name="InEmail">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InNama1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InEmailActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
@@ -440,9 +443,9 @@
             <Property name="text" type="java.lang.String" value="Nomor HP"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="InNama2">
+        <Component class="javax.swing.JTextField" name="InNoHp">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InNama2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InNoHpActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -480,7 +483,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="TxtTax" min="-2" pref="87" max="-2" attributes="0"/>
-                              <Component id="jLabel4" min="-2" pref="176" max="-2" attributes="0"/>
+                              <Component id="TxtTot" min="-2" pref="176" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -504,7 +507,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="jLabel4" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="TxtTot" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="BtnPesan" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -513,7 +516,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="TxtTot">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>

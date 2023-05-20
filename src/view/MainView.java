@@ -4,6 +4,12 @@
  */
 package view;
 
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import controller.MainViewController;
+
 /**
  *
  * @author msi-modern
@@ -13,8 +19,11 @@ public class MainView extends javax.swing.JFrame {
     /**
      * Creates new form MainView
      */
+    MainViewController mv;
     public MainView() {
         initComponents();
+        mv = new MainViewController(this);
+        mv.isiDropdown();
     }
 
     /**
@@ -48,11 +57,11 @@ public class MainView extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         InNama = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        InNama1 = new javax.swing.JTextField();
+        InEmail = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        InNama2 = new javax.swing.JTextField();
+        InNoHp = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        TxtTot = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         BtnPesan = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
@@ -64,7 +73,7 @@ public class MainView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        MenuJadwal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        MenuJadwal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Pilih Jadwal Show");
@@ -166,6 +175,8 @@ public class MainView extends javax.swing.JFrame {
 
         SisaVip.setText("-");
 
+        SpinVip.setRequestFocusEnabled(false);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -237,17 +248,17 @@ public class MainView extends javax.swing.JFrame {
 
         jLabel11.setText("Email");
 
-        InNama1.addActionListener(new java.awt.event.ActionListener() {
+        InEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InNama1ActionPerformed(evt);
+                InEmailActionPerformed(evt);
             }
         });
 
         jLabel12.setText("Nomor HP");
 
-        InNama2.addActionListener(new java.awt.event.ActionListener() {
+        InNoHp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InNama2ActionPerformed(evt);
+                InNoHpActionPerformed(evt);
             }
         });
 
@@ -261,9 +272,9 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel11)
                     .addComponent(jLabel12)
-                    .addComponent(InNama1)
+                    .addComponent(InEmail)
                     .addComponent(InNama)
-                    .addComponent(InNama2, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(InNoHp, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -276,19 +287,19 @@ public class MainView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(InNama1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(InEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(InNama2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(InNoHp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("tot");
+        TxtTot.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        TxtTot.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        TxtTot.setText("tot");
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setText("Grand Total:");
@@ -331,7 +342,7 @@ public class MainView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(TxtTax, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(TxtTot, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -348,7 +359,7 @@ public class MainView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel13)
                 .addGap(5, 5, 5)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TxtTot, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnPesan, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -415,13 +426,13 @@ public class MainView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void InNama2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InNama2ActionPerformed
+    private void InNoHpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InNoHpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_InNama2ActionPerformed
+    }//GEN-LAST:event_InNoHpActionPerformed
 
-    private void InNama1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InNama1ActionPerformed
+    private void InEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_InNama1ActionPerformed
+    }//GEN-LAST:event_InEmailActionPerformed
 
     private void InNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InNamaActionPerformed
         // TODO add your handling code here:
@@ -472,9 +483,9 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel HargaReguler;
     private javax.swing.JLabel HargaVip;
     private javax.swing.JLabel HargaVip1;
+    private javax.swing.JTextField InEmail;
     private javax.swing.JTextField InNama;
-    private javax.swing.JTextField InNama1;
-    private javax.swing.JTextField InNama2;
+    private javax.swing.JTextField InNoHp;
     private javax.swing.JComboBox<String> MenuJadwal;
     private javax.swing.JLabel SisaReguler;
     private javax.swing.JLabel SisaVip;
@@ -483,6 +494,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JSpinner SpinVip;
     private javax.swing.JSpinner SpinVip1;
     private javax.swing.JLabel TxtTax;
+    private javax.swing.JLabel TxtTot;
     private javax.swing.JLabel TxtTotal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -494,7 +506,6 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -509,4 +520,102 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     // End of variables declaration//GEN-END:variables
+
+    public JLabel getHargaReguler() {
+        return HargaReguler;
+    }
+
+    public void setHargaReguler(JLabel HargaReguler) {
+        this.HargaReguler = HargaReguler;
+    }
+
+    public JLabel getHargaVip() {
+        return HargaVip;
+    }
+
+    public void setHargaVip(JLabel HargaVip) {
+        this.HargaVip = HargaVip;
+    }
+
+    public JTextField getInEmail() {
+        return InEmail;
+    }
+
+    public void setInEmail(JTextField InEmail) {
+        this.InEmail = InEmail;
+    }
+
+    public JTextField getInNama() {
+        return InNama;
+    }
+
+    public void setInNama(JTextField InNama) {
+        this.InNama = InNama;
+    }
+
+    public JTextField getInNoHp() {
+        return InNoHp;
+    }
+
+    public void setInNoHp(JTextField InNoHp) {
+        this.InNoHp = InNoHp;
+    }
+
+    public JComboBox<String> getMenuJadwal() {
+        return MenuJadwal;
+    }
+
+    public void setMenuJadwal(JComboBox<String> MenuJadwal) {
+        this.MenuJadwal = MenuJadwal;
+    }
+
+    public JLabel getSisaReguler() {
+        return SisaReguler;
+    }
+
+    public void setSisaReguler(JLabel SisaReguler) {
+        this.SisaReguler = SisaReguler;
+    }
+
+    public JLabel getSisaVip() {
+        return SisaVip;
+    }
+
+    public void setSisaVip(JLabel SisaVip) {
+        this.SisaVip = SisaVip;
+    }
+
+    public JSpinner getSpinReguler() {
+        return SpinReguler;
+    }
+
+    public void setSpinReguler(JSpinner SpinReguler) {
+        this.SpinReguler = SpinReguler;
+    }
+
+    public JSpinner getSpinVip() {
+        return SpinVip;
+    }
+
+    public void setSpinVip(JSpinner SpinVip) {
+        this.SpinVip = SpinVip;
+    }
+
+    public JLabel getTxtTax() {
+        return TxtTax;
+    }
+
+    public void setTxtTax(JLabel TxtTax) {
+        this.TxtTax = TxtTax;
+    }
+
+    public JLabel getTxtTotal() {
+        return TxtTotal;
+    }
+
+    public void setTxtTotal(JLabel TxtTotal) {
+        this.TxtTotal = TxtTotal;
+    }
+    
+    
 }

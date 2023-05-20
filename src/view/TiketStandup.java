@@ -15,7 +15,7 @@ public class TiketStandup {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        TabelBooking t = new TabelBooking();
+        MainView t = new MainView();
         t.setVisible(true);
         t.setLocationRelativeTo(null);
     }

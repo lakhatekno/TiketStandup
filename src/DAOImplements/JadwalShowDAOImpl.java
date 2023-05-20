@@ -10,6 +10,7 @@ import model.JadwalShow;
 import koneksi.Connector;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,6 +22,7 @@ public class JadwalShowDAOImpl implements JadwalShowDAO{
     Connection con;
     private static String select = "SELECT * FROM `jadwal_show`";
     private static String insert = "INSERT INTO `jadwal_show` (`id_jadwal_show`, `tanggal_show`, `lokasi`, `kuota_reguler`, `kuota_vip`, `harga_reguler`, `harga_vip`) VALUES (NULL, ?, ?, ?, ?, ?, ?)";
+    
     public JadwalShowDAOImpl() {
         con = Connector.connection();
     }
@@ -86,5 +88,22 @@ public class JadwalShowDAOImpl implements JadwalShowDAO{
         return j_s;
     }
     
+    public String[] getJadwal() {
+        String[] js = {};
+        String arrNew[] = null;
     
-}
+        try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(select);
+            while (rs.next()) {
+//                int id = rs.getInt("id_jadwal_show");
+                String nilai = rs.getString("tanggal_show");
+                arrNew = Arrays.copyOf(js, js.length + 1);
+                arrNew[js.length]= nilai;
+            }
+            } catch(SQLException ex) {
+                Logger.getLogger(JadwalShowDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return arrNew;
+        }
+    }
