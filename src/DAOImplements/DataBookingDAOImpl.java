@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.text.SimpleDateFormat;  
 import java.util.Date; 
+import model.BookingConfirmation;
 
 /**
  *
@@ -29,6 +30,33 @@ public class DataBookingDAOImpl implements DataBookingDAO{
 
     @Override
     public void insert(DataBooking d_b) {
+        PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, this.getDate());
+            statement.setString(2, d_b.getNama());
+            statement.setString(3, d_b.getNoHp());
+            statement.setString(4, d_b.getEmail());
+            statement.setInt(5,d_b.getIdJadwalShow());
+            statement.setInt(6,d_b.getJmlReguler());
+            statement.setInt(7, d_b.getJmlVip());
+            statement.executeUpdate();
+            ResultSet rs = statement.getGeneratedKeys();
+            while(rs.next()) {
+                d_b.setIdBookingData(rs.getString(1));
+            }
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch(SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+    
+    public void insert(BookingConfirmation d_b) {
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);

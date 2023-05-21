@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import controller.MainViewController;
+import model.BookingConfirmation;
+import kalkulator.Kalkulator;
 
 /**
  *
@@ -20,6 +22,7 @@ public class MainView extends javax.swing.JFrame {
      * Creates new form MainView
      */
     MainViewController mv;
+    ConfirmWindow cf;
     public MainView() {
         initComponents();
         mv = new MainViewController(this);
@@ -47,12 +50,16 @@ public class MainView extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         SisaReguler = new javax.swing.JLabel();
         SpinReguler = new javax.swing.JSpinner();
+        sisaRegInv = new javax.swing.JLabel();
+        hargaReg = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         HargaVip = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         SisaVip = new javax.swing.JLabel();
         SpinVip = new javax.swing.JSpinner();
+        sisaVipInv = new javax.swing.JLabel();
+        hargaVipStatic = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         InNama = new javax.swing.JTextField();
@@ -79,6 +86,11 @@ public class MainView extends javax.swing.JFrame {
         jLabel1.setText("Pilih Jadwal Show");
 
         BtnJadwal.setText("Pilih");
+        BtnJadwal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnJadwalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,31 +136,50 @@ public class MainView extends javax.swing.JFrame {
 
         SisaReguler.setText("-");
 
+        SpinReguler.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                SpinRegulerStateChanged(evt);
+            }
+        });
+
+        sisaRegInv.setFont(new java.awt.Font("Segoe UI", 0, 1)); // NOI18N
+        sisaRegInv.setForeground(getBackground());
+        sisaRegInv.setText("jLabel4");
+
+        hargaReg.setFont(new java.awt.Font("Segoe UI", 0, 1)); // NOI18N
+        hargaReg.setForeground(getBackground());
+        hargaReg.setText("jLabel4");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(HargaReguler, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(65, 65, 65)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
                             .addComponent(jLabel3)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(SisaReguler))))
+                            .addGap(18, 18, 18)
+                            .addComponent(sisaRegInv, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(SisaReguler)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(SpinReguler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                        .addComponent(SpinReguler, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(hargaReg, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(sisaRegInv))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(HargaReguler)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -156,8 +187,12 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(SisaReguler))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SpinReguler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(hargaReg)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(SpinReguler, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -176,22 +211,43 @@ public class MainView extends javax.swing.JFrame {
         SisaVip.setText("-");
 
         SpinVip.setRequestFocusEnabled(false);
+        SpinVip.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                SpinVipStateChanged(evt);
+            }
+        });
+
+        sisaVipInv.setFont(new java.awt.Font("Segoe UI", 0, 1)); // NOI18N
+        sisaVipInv.setForeground(javax.swing.UIManager.getDefaults().getColor("window"));
+        sisaVipInv.setText("jLabel4");
+
+        hargaVipStatic.setFont(new java.awt.Font("Segoe UI", 0, 1)); // NOI18N
+        hargaVipStatic.setForeground(getBackground());
+        hargaVipStatic.setText("jLabel4");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(HargaVip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(14, 14, 14)
+                .addComponent(sisaVipInv, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SpinVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(SpinVip, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(hargaVipStatic, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SisaVip)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,8 +261,14 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(SisaVip))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SpinVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sisaVipInv)
+                            .addComponent(hargaVipStatic))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(SpinVip, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -374,7 +436,7 @@ public class MainView extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 197, Short.MAX_VALUE)
+            .addGap(0, 198, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,7 +454,7 @@ public class MainView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel16)
@@ -400,7 +462,7 @@ public class MainView extends javax.swing.JFrame {
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -440,7 +502,66 @@ public class MainView extends javax.swing.JFrame {
 
     private void BtnPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPesanActionPerformed
         // TODO add your handling code here:
+        ErrorBox err;
+        if("".equals(getInNama().getText()) ||
+           "".equals(getInEmail().getText()) ||
+           "".equals(getInNoHp().getText())
+        ) {
+            err = new ErrorBox("kosong");
+            err.setVisible(true);
+            err.setLocationRelativeTo(null);
+        } else if (Integer.parseInt(getSpinVip().getValue().toString()) < 0 ||
+                   Integer.parseInt(getSpinReguler().getValue().toString()) < 0
+        )  {
+            err = new ErrorBox("invalid");
+            err.setVisible(true);
+            err.setLocationRelativeTo(null);
+        } else {
+//            System.out.println("kontol");
+            BookingConfirmation bc = new BookingConfirmation();
+            Kalkulator k = new Kalkulator();
+            bc.setNama(getInNama().getText());
+            bc.setEmail(getInEmail().getText());
+            bc.setNoHp(getInNoHp().getText());
+            bc.setTanggal(getMenuJadwal().getSelectedItem().toString());
+            bc.setIdJadwalShow(getMenuJadwal().getSelectedIndex() + 1);
+            bc.setJmlReguler(Integer.parseInt(getSpinReguler().getValue().toString()));
+            bc.setJmlVip(Integer.parseInt(getSpinVip().getValue().toString()));
+            bc.setTotal(k.hitungJumlah(Integer.parseInt(getHargaVipStatic().getText()), bc.getJmlVip()) + k.hitungJumlah(Integer.parseInt(getHargaReg().getText()), bc.getJmlReguler()));
+            bc.setTax((int) k.hitungPajak(bc.getTotal()));
+            bc.setGtot((int) k.hitungTotal(bc.getTotal()));
+            System.out.println(bc.getNama());
+            cf = new ConfirmWindow(bc);
+            cf.setVisible(true);
+            cf.setLocationRelativeTo(null);
+        }
     }//GEN-LAST:event_BtnPesanActionPerformed
+
+    private void BtnJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJadwalActionPerformed
+        // TODO add your handling code here:
+        JComboBox<String> dd = this.getMenuJadwal();
+        int id = dd.getSelectedIndex();
+        mv.isiKuota(id);
+        mv.isiHarga(id);
+    }//GEN-LAST:event_BtnJadwalActionPerformed
+
+    private void SpinRegulerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinRegulerStateChanged
+        // TODO add your handling code here:
+        JLabel sisaFix = this.getSisaRegInv();
+        JLabel sisa = this.getSisaReguler();
+        JSpinner s = this.getSpinReguler();
+        mv.ubahKuota(sisaFix, sisa, s);
+        mv.updateBayar();
+    }//GEN-LAST:event_SpinRegulerStateChanged
+
+    private void SpinVipStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinVipStateChanged
+        // TODO add your handling code here:
+        JLabel sisaFix = this.getSisaVipInv();
+        JLabel sisa = this.getSisaVip();
+        JSpinner s = this.getSpinVip();
+        mv.ubahKuota(sisaFix, sisa, s);
+        mv.updateBayar();
+    }//GEN-LAST:event_SpinVipStateChanged
 
     /**
      * @param args the command line arguments
@@ -496,6 +617,8 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel TxtTax;
     private javax.swing.JLabel TxtTot;
     private javax.swing.JLabel TxtTotal;
+    private javax.swing.JLabel hargaReg;
+    private javax.swing.JLabel hargaVipStatic;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -519,6 +642,8 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JLabel sisaRegInv;
+    private javax.swing.JLabel sisaVipInv;
     // End of variables declaration//GEN-END:variables
 
     public JLabel getHargaReguler() {
@@ -616,6 +741,44 @@ public class MainView extends javax.swing.JFrame {
     public void setTxtTotal(JLabel TxtTotal) {
         this.TxtTotal = TxtTotal;
     }
-    
-    
+
+    public JLabel getSisaRegInv() {
+        return sisaRegInv;
+    }
+
+    public void setSisaRegInv(JLabel sisaRegInv) {
+        this.sisaRegInv = sisaRegInv;
+    }
+
+    public JLabel getSisaVipInv() {
+        return sisaVipInv;
+    }
+
+    public void setSisaVipInv(JLabel sisaVipInv) {
+        this.sisaVipInv = sisaVipInv;
+    }
+
+    public JLabel getHargaReg() {
+        return hargaReg;
+    }
+
+    public void setHargaReg(JLabel hargaReg) {
+        this.hargaReg = hargaReg;
+    }
+
+    public JLabel getHargaVipStatic() {
+        return hargaVipStatic;
+    }
+
+    public void setHargaVipStatic(JLabel hargaVipStatic) {
+        this.hargaVipStatic = hargaVipStatic;
+    }    
+
+    public JLabel getTxtTot() {
+        return TxtTot;
+    }
+
+    public void setTxtTot(JLabel TxtTot) {
+        this.TxtTot = TxtTot;
+    }
 }

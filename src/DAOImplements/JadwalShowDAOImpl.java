@@ -74,6 +74,7 @@ public class JadwalShowDAOImpl implements JadwalShowDAO{
             while(rs.next()){
                 JadwalShow js = new JadwalShow();
                 js.setIdJadwalShow(rs.getInt("id_jadwal_show"));
+                js.setTanggalShow(rs.getString("tanggal_show"));
                 js.setLokasi(rs.getString("lokasi"));
                 js.setKuotaReguler(rs.getInt("kuota_reguler"));
                 js.setKuotaVip(rs.getInt("kuota_vip"));

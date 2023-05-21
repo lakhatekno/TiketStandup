@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package DAOs;
-import java.sql.SQLException;
 import java.util.List;
 import model.JadwalShow;
 /**
