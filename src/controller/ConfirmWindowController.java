@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+import DAOImplements.JadwalShowDAOImpl;
 import view.ConfirmWindow;
 import model.BookingConfirmation;
 /**
@@ -49,5 +50,10 @@ public class ConfirmWindowController {
         cf.getCfTotal().setText(Integer.toString(total));
         cf.getCfTax().setText(Integer.toString(tax));
         cf.getCfGTot().setText(Integer.toString(gtot));        
+    }
+    
+    public void update() {
+        JadwalShowDAOImpl js = new JadwalShowDAOImpl();
+        js.update(bc);
     }
 }

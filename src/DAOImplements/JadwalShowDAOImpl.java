@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.BookingConfirmation;
 
 /**
  *
@@ -22,6 +23,7 @@ public class JadwalShowDAOImpl implements JadwalShowDAO{
     Connection con;
     private static String select = "SELECT * FROM `jadwal_show`";
     private static String insert = "INSERT INTO `jadwal_show` (`id_jadwal_show`, `tanggal_show`, `lokasi`, `kuota_reguler`, `kuota_vip`, `harga_reguler`, `harga_vip`) VALUES (NULL, ?, ?, ?, ?, ?, ?)";
+    private static String update;
     
     public JadwalShowDAOImpl() {
         con = Connector.connection();
@@ -58,12 +60,33 @@ public class JadwalShowDAOImpl implements JadwalShowDAO{
     public void update(JadwalShow js) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    public void update (BookingConfirmation bc) {
+        update = "UPDATE `jadwal_show` SET `kuota_reguler` = kuota_reguler-?, `kuota_vip` = kuota_vip-? WHERE `jadwal_show`.`id_jadwal_show` = ?";
+        PreparedStatement statement = null;
+        try{
+            statement = con.prepareStatement(update);
+            statement.setInt(1, bc.getJmlReguler());
+            statement.setInt(2, bc.getJmlVip());
+            statement.setInt(3, bc.getIdJadwalShow());
+            statement.executeUpdate();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch(SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 
     @Override
     public void delete(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    
     @Override
     public List<JadwalShow> getAll() {
         List<JadwalShow> j_s = null;

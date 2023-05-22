@@ -6,6 +6,7 @@ package view;
 
 import DAOImplements.DataBookingDAOImpl;
 import controller.ConfirmWindowController;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import model.BookingConfirmation;
 
@@ -20,11 +21,14 @@ public class ConfirmWindow extends javax.swing.JFrame {
      */
     ConfirmWindowController cw;
     BookingConfirmation bc;
-    public ConfirmWindow(BookingConfirmation bc) {
+    JFrame jf;
+    public ConfirmWindow(JFrame jf, BookingConfirmation bc) {
         initComponents();
         this.bc = bc;
+        this.jf = jf;
         cw = new ConfirmWindowController(bc,  this);
         cw.isiData();
+        
     }
 
     /**
@@ -238,7 +242,12 @@ public class ConfirmWindow extends javax.swing.JFrame {
     private void BtnCfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCfActionPerformed
         DataBookingDAOImpl db = new DataBookingDAOImpl();
         db.insert(bc);
+        cw.update();
         this.dispose();
+        jf.dispose();
+        MainView mv = new MainView();
+        mv.setVisible(true);
+        mv.setLocationRelativeTo(null);
     }//GEN-LAST:event_BtnCfActionPerformed
 
     private void BtnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelActionPerformed
