@@ -23,8 +23,8 @@ public class JadwalShowDAOImpl implements JadwalShowDAO{
     Connection con;
     private static String select = "SELECT * FROM `jadwal_show`";
     private static String insert = "INSERT INTO jadwal_show (id_jadwal_show, tanggal_show, lokasi, kuota_reguler, kuota_vip, harga_reguler, harga_vip) VALUES (NULL, ?, ?, ?, ?, ?, ?)";
-   private static String update = "UPDATE jadwal_show SET tanggal_show=?, lokasi=?, kuota_reguler=?, kuota_vip=?, harga_reguler=?, harga_vip=? WHERE id_jadwal_show=?";
-   private static String delete = "DELETE from jadwal_show WHERE id_jadwal_show=?";
+    private static String update;
+    private static String delete = "DELETE from jadwal_show WHERE id_jadwal_show=?";
     public JadwalShowDAOImpl() {
         con = Connector.connection();
     }
@@ -58,6 +58,7 @@ public class JadwalShowDAOImpl implements JadwalShowDAO{
 
     @Override
     public void update(JadwalShow j_s) {
+       update = "UPDATE jadwal_show SET tanggal_show=?, lokasi=?, kuota_reguler=?, kuota_vip=?, harga_reguler=?, harga_vip=? WHERE id_jadwal_show=?";
        PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(update);
