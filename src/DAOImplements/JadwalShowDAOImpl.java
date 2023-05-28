@@ -22,9 +22,9 @@ import model.BookingConfirmation;
 public class JadwalShowDAOImpl implements JadwalShowDAO{
     Connection con;
     private static String select = "SELECT * FROM `jadwal_show`";
-    private static String insert = "INSERT INTO `jadwal_show` (`id_jadwal_show`, `tanggal_show`, `lokasi`, `kuota_reguler`, `kuota_vip`, `harga_reguler`, `harga_vip`) VALUES (NULL, ?, ?, ?, ?, ?, ?)";
-    private static String update;
-    
+    private static String insert = "INSERT INTO jadwal_show (id_jadwal_show, tanggal_show, lokasi, kuota_reguler, kuota_vip, harga_reguler, harga_vip) VALUES (NULL, ?, ?, ?, ?, ?, ?)";
+   private static String update = "UPDATE jadwal_show SET tanggal_show=?, lokasi=?, kuota_reguler=?, kuota_vip=?, harga_reguler=?, harga_vip=? WHERE id_jadwal_show=?";
+   private static String delete = "DELETE from jadwal_show WHERE id_jadwal_show=?";
     public JadwalShowDAOImpl() {
         con = Connector.connection();
     }
@@ -57,8 +57,27 @@ public class JadwalShowDAOImpl implements JadwalShowDAO{
     }
 
     @Override
-    public void update(JadwalShow js) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void update(JadwalShow j_s) {
+       PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(update);
+            statement.setString(1, j_s.getTanggalShow());
+            statement.setString(2, j_s.getLokasi());
+            statement.setInt(3, j_s.getKuotaReguler());
+            statement.setInt(4, j_s.getKuotaVip());
+            statement.setInt(5,j_s.getHargaReguler());
+            statement.setInt(6,j_s.getHargaVip());
+            statement.setInt(7,j_s.getIdJadwalShow());
+            statement.executeUpdate();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch(SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
     
     public void update (BookingConfirmation bc) {
@@ -80,10 +99,44 @@ public class JadwalShowDAOImpl implements JadwalShowDAO{
             }
         }
     }
+    
+    public void update (int id, int reg, int vip) {
+        update = "UPDATE `jadwal_show` SET `kuota_reguler` = kuota_reguler+?, `kuota_vip` = kuota_vip+? WHERE `jadwal_show`.`id_jadwal_show` = ?";
+        PreparedStatement statement = null;
+        try{
+            statement = con.prepareStatement(update);
+            statement.setInt(1, reg);
+            statement.setInt(2, vip);
+            statement.setInt(3, id);
+            statement.executeUpdate();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch(SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 
     @Override
     public void delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(delete);
+            statement.setInt(1, id);
+          
+            statement.executeUpdate();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch(SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     

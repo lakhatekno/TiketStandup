@@ -4,10 +4,13 @@
  */
 package view;
 
+import controller.DataBookingController;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import controller.JadwalShowController;
+import javax.swing.*;
+import java.awt.event.*;
 
 /**
  *
@@ -23,6 +26,9 @@ public class AdminJadwal extends javax.swing.JFrame {
         initComponents();
         jc = new JadwalShowController(this);
         jc.isiTabel();
+        DataBookingController dbc = new DataBookingController(this);
+        dbc.isiTabel();
+      
     }
 
     /**
@@ -34,6 +40,7 @@ public class AdminJadwal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jProgressBar1 = new javax.swing.JProgressBar();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableJadwal = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -49,10 +56,15 @@ public class AdminJadwal extends javax.swing.JFrame {
         AdminKuotaReg = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        AdminHargaVip = new javax.swing.JTextField();
-        AdminKuotaVip = new javax.swing.JTextField();
         ButtonAdminUpdate = new javax.swing.JButton();
         ButtonAdminDelete = new javax.swing.JButton();
+        ButtonKembali = new javax.swing.JButton();
+        AdminKuotaVip = new javax.swing.JTextField();
+        AdminHargaVip = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TabelBooking = new javax.swing.JTable();
+        ButtonBookingDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +79,11 @@ public class AdminJadwal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TableJadwal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TableJadwalMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TableJadwal);
 
         jLabel2.setText("Id");
@@ -117,18 +134,6 @@ public class AdminJadwal extends javax.swing.JFrame {
 
         jLabel8.setText("Harga VIP");
 
-        AdminHargaVip.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdminHargaVipActionPerformed(evt);
-            }
-        });
-
-        AdminKuotaVip.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdminKuotaVipActionPerformed(evt);
-            }
-        });
-
         ButtonAdminUpdate.setText("Update");
         ButtonAdminUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,57 +148,118 @@ public class AdminJadwal extends javax.swing.JFrame {
             }
         });
 
+        ButtonKembali.setBackground(new java.awt.Color(255, 0, 0));
+        ButtonKembali.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ButtonKembali.setForeground(new java.awt.Color(255, 255, 255));
+        ButtonKembali.setText("Kembali");
+        ButtonKembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonKembaliActionPerformed(evt);
+            }
+        });
+
+        AdminKuotaVip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdminKuotaVipActionPerformed(evt);
+            }
+        });
+
+        AdminHargaVip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdminHargaVipActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("DATA PEMESAN");
+
+        TabelBooking.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        TabelBooking.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelBookingMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(TabelBooking);
+
+        ButtonBookingDelete.setText("Delete");
+        ButtonBookingDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonBookingDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(AdminTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(32, 32, 32)
-                            .addComponent(AdminLokasi, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(AdminKuotaReg, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(AdminKuotaVip, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel8))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(AdminHargaReg, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(AdminHargaVip, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(AdminId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 333, Short.MAX_VALUE)
+                        .addComponent(ButtonBookingDelete)
+                        .addGap(279, 279, 279))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ButtonAdminInsert)
-                        .addGap(18, 18, 18)
-                        .addComponent(ButtonAdminUpdate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ButtonAdminDelete)))
-                .addGap(8, 8, 8))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ButtonKembali)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(51, 51, 51)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(ButtonAdminInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(ButtonAdminUpdate)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(ButtonAdminDelete))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(40, 40, 40)
+                                            .addComponent(AdminId, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel8))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(AdminLokasi, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(AdminTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(AdminKuotaReg, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(AdminKuotaVip, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(AdminHargaReg, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(AdminHargaVip, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(235, 235, 235))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(17, 17, 17)
+                .addComponent(ButtonKembali)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(AdminId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -210,26 +276,28 @@ public class AdminJadwal extends javax.swing.JFrame {
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AdminKuotaVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4)
+                            .addComponent(AdminKuotaVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(AdminHargaReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AdminHargaVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addGap(29, 29, 29))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ButtonAdminDelete)
-                    .addComponent(ButtonAdminUpdate)
-                    .addComponent(ButtonAdminInsert))
-                .addGap(19, 19, 19))
+                            .addComponent(jLabel8)
+                            .addComponent(AdminHargaVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ButtonAdminDelete)
+                            .addComponent(ButtonAdminUpdate)
+                            .addComponent(ButtonAdminInsert))))
+                .addGap(35, 35, 35)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonBookingDelete)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -242,6 +310,15 @@ public class AdminJadwal extends javax.swing.JFrame {
     private void ButtonAdminInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAdminInsertActionPerformed
         // TODO add your handling code here:
         jc.insert();
+        JOptionPane.showMessageDialog(this, "Data Berhasil Ditambah");
+         AdminId.setText("");
+    AdminTanggal.setText("");
+    AdminLokasi.setText("");
+    AdminKuotaReg.setText("");
+     AdminKuotaVip.setText("");
+    AdminHargaReg.setText("");
+    AdminHargaVip.setText("");
+    jc.isiTabel();
     }//GEN-LAST:event_ButtonAdminInsertActionPerformed
 
     private void AdminTanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminTanggalActionPerformed
@@ -256,21 +333,68 @@ public class AdminJadwal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AdminKuotaRegActionPerformed
 
-    private void AdminHargaVipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminHargaVipActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AdminHargaVipActionPerformed
+    private void ButtonAdminUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAdminUpdateActionPerformed
+        jc.update();
+        JOptionPane.showMessageDialog(this, "Data Berhasil diupdate");
+         AdminId.setText("");
+    AdminTanggal.setText("");
+    AdminLokasi.setText("");
+    AdminKuotaReg.setText("");
+     AdminKuotaVip.setText("");
+    AdminHargaReg.setText("");
+    AdminHargaVip.setText("");
+    jc.isiTabel();
+    }//GEN-LAST:event_ButtonAdminUpdateActionPerformed
+
+    private void ButtonAdminDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAdminDeleteActionPerformed
+       jc.delete();
+        JOptionPane.showMessageDialog(this, "Data Berhasil dihapus");
+         AdminId.setText("");
+    AdminTanggal.setText("");
+    AdminLokasi.setText("");
+    AdminKuotaReg.setText("");
+     AdminKuotaVip.setText("");
+    AdminHargaReg.setText("");
+    AdminHargaVip.setText("");
+   jc.isiTabel();
+    }//GEN-LAST:event_ButtonAdminDeleteActionPerformed
+
+    private void TableJadwalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableJadwalMouseClicked
+       int baris = TableJadwal.getSelectedRow();
+   AdminId.setText(TableJadwal.getValueAt(baris, 0).toString());
+    AdminTanggal.setText(TableJadwal.getValueAt(baris, 1).toString());
+    AdminLokasi.setText(TableJadwal.getValueAt(baris, 2).toString());
+    AdminKuotaReg.setText(TableJadwal.getValueAt(baris, 3).toString());
+     AdminKuotaVip.setText(TableJadwal.getValueAt(baris, 4).toString());
+    AdminHargaReg.setText(TableJadwal.getValueAt(baris, 5).toString());
+    AdminHargaVip.setText(TableJadwal.getValueAt(baris, 6).toString());
+    }//GEN-LAST:event_TableJadwalMouseClicked
+
+    private void ButtonKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonKembaliActionPerformed
+        JFrame l = new LoginAdmin();
+        l.setVisible(true);
+        l.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_ButtonKembaliActionPerformed
 
     private void AdminKuotaVipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminKuotaVipActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AdminKuotaVipActionPerformed
 
-    private void ButtonAdminUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAdminUpdateActionPerformed
+    private void AdminHargaVipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminHargaVipActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonAdminUpdateActionPerformed
+    }//GEN-LAST:event_AdminHargaVipActionPerformed
 
-    private void ButtonAdminDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAdminDeleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonAdminDeleteActionPerformed
+    private void ButtonBookingDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBookingDeleteActionPerformed
+         DataBookingController dbc = new DataBookingController(this);
+        dbc.delete();
+        dbc.isiTabel();
+    }//GEN-LAST:event_ButtonBookingDeleteActionPerformed
+
+    private void TabelBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelBookingMouseClicked
+         int baris = TabelBooking.getSelectedRow();
+         String BookingId =TabelBooking.getValueAt(baris, 0).toString();
+    }//GEN-LAST:event_TabelBookingMouseClicked
 
     /**
      * @param args the command line arguments
@@ -318,7 +442,11 @@ public class AdminJadwal extends javax.swing.JFrame {
     private javax.swing.JButton ButtonAdminDelete;
     private javax.swing.JButton ButtonAdminInsert;
     private javax.swing.JButton ButtonAdminUpdate;
+    private javax.swing.JButton ButtonBookingDelete;
+    private javax.swing.JButton ButtonKembali;
+    private javax.swing.JTable TabelBooking;
     private javax.swing.JTable TableJadwal;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -326,7 +454,9 @@ public class AdminJadwal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
    
@@ -441,6 +571,14 @@ public class AdminJadwal extends javax.swing.JFrame {
 
     public void setAdminTanggal(JTextField AdminTanggal) {
         this.AdminTanggal = AdminTanggal;
+    }
+
+    public JTable getTabelBooking() {
+        return TabelBooking;
+    }
+
+    public void setTabelBooking(JTable TabelBooking) {
+        this.TabelBooking = TabelBooking;
     }
     
     

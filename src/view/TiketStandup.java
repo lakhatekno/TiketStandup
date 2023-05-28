@@ -15,7 +15,7 @@ public class TiketStandup {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        MainView t = new MainView();
+        HomePage t = new HomePage();
         t.setVisible(true);
         t.setLocationRelativeTo(null);
     }

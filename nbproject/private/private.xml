@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/BELAJAR/TiketStandup/src/view/LoginAdmin.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/koneksi/Connector.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/controller/JadwalShowController.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/kalkulator/Kalkulator.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/model/DataBooking.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/model/ModelTabelBooking.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/DAOs/JadwalShowDAO.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/model/JadwalShow.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/view/ErrorBox.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/DAOImplements/DataBookingDAOImpl.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/view/TiketStandup.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/view/MainView.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/controller/MainViewController.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/view/DataBookngConfirmation.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/controller/DataBookingController.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/view/AdminJadwal.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/view/ConfirmWindow.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/view/HomePage.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/DAOImplements/JadwalShowDAOImpl.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/model/BookingConfirmation.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/model/ModelAdminJadwal.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/DAOs/DAO.java</file>
+            <file>file:/C:/BELAJAR/TiketStandup/src/DAOs/DataBookingDAO.java</file>
+        </group>
+    </open-files>
+</project-private>

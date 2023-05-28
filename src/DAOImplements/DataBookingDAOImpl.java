@@ -23,6 +23,7 @@ import model.BookingConfirmation;
 public class DataBookingDAOImpl implements DataBookingDAO{
     Connection con;
     private static String select = "SELECT * FROM `booking_data`";
+     private static String delete = "DELETE from booking_data WHERE id_booking_data=?";
     private static String insert = "INSERT INTO `booking_data` (`id_booking_data`, `nama`, `no_hp`, `email`, `id_jadwal_show`, `kursi_reguler`, `kursi_vip`) VALUES (?, ?, ?, ?, ?, ?, ?)";
     public DataBookingDAOImpl() {
         con = Connector.connection();
@@ -90,7 +91,39 @@ public class DataBookingDAOImpl implements DataBookingDAO{
 
     @Override
     public void delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(delete);
+            statement.setInt(1, id);
+          
+            statement.executeUpdate();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch(SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+    
+    public void delete(String id) {
+         PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(delete);
+            statement.setString(1, id);
+          
+            statement.executeUpdate();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+            } catch(SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     @Override

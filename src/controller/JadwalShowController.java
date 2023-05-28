@@ -38,4 +38,22 @@ public class JadwalShowController {
        js.setHargaVip(Integer.parseInt(jadwal.getAdminHargaVip().getText()));
         dataImpl.insert(js);
     }
+    
+    public void update() {
+        JadwalShow js = new JadwalShow();
+        js.setTanggalShow(jadwal.getAdminTanggal().getText());
+        js.setLokasi(jadwal.getAdminLokasi().getText());
+        js.setKuotaReguler(Integer.parseInt(jadwal.getAdminKuotaReg().getText()));
+        js.setKuotaVip(Integer.parseInt(jadwal.getAdminKuotaVip().getText()));
+       js.setHargaReguler(Integer.parseInt(jadwal.getAdminHargaReg().getText()));
+       js.setHargaVip(Integer.parseInt(jadwal.getAdminHargaVip().getText()));
+       js.setIdJadwalShow(Integer.parseInt(jadwal.getAdminId().getText()));
+        dataImpl.update(js);
+    }
+    
+    public void delete() {
+       int id = Integer.parseInt(jadwal.getAdminId().getText());
+     
+        dataImpl.delete(id);
+    }
 }

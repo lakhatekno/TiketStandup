@@ -33,7 +33,7 @@ public class JadwalShow {
     }
 
     public void setIdJadwalShow() {
-        this.idJadwalShow = idJadwalShow;
+        
     }
     
     public void setIdJadwalShow(int idJadwalShow) {

@@ -5,18 +5,21 @@
 package controller;
 import java.util.List;
 import model.*;
-import view.TabelBooking;
 import DAOImplements.DataBookingDAOImpl;
+import DAOImplements.JadwalShowDAOImpl;
+import javax.swing.JTable;
+import view.AdminJadwal;
 /**
  *
  * @author msi-modern
  */
 public class DataBookingController {
-    TabelBooking tabel;
+    AdminJadwal tabel;
     DataBookingDAOImpl dataImpl;
+    JadwalShowDAOImpl js;
     List<DataBooking> d_b;
     
-    public DataBookingController(TabelBooking tabel) {
+    public DataBookingController(AdminJadwal tabel) {
         this.tabel = tabel;
         dataImpl = new DataBookingDAOImpl();
         d_b = dataImpl.getAll();
@@ -25,17 +28,18 @@ public class DataBookingController {
     public void isiTabel() {
         d_b = dataImpl.getAll();
         ModelTabelBooking mb = new ModelTabelBooking(d_b);
-        tabel.getTableBooking().setModel(mb);
+        tabel.getTabelBooking().setModel(mb);
     }
     
-    public void insert() {
-        DataBooking db = new DataBooking();
-        db.setNama(tabel.getTxtNama().getText());
-        db.setEmail(tabel.getTxtEmail().getText());
-        db.setNoHp(tabel.getTxtNoHp().getText());
-        db.setIdJadwalShow(Integer.parseInt(tabel.getTxtShow().getText()));
-        db.setJmlReguler(Integer.parseInt(tabel.getTxtReg().getText()));
-        db.setJmlVip(Integer.parseInt(tabel.getTxtVip().getText()));
-        dataImpl.insert(db);
+   public void delete() {
+        JTable selected = tabel.getTabelBooking();
+        js = new JadwalShowDAOImpl();
+       int row = selected.getSelectedRow();
+       String id = selected.getValueAt(row, 0).toString();
+       dataImpl.delete(id);
+       int idShow = Integer.parseInt(selected.getValueAt(row, 4).toString());
+       int reg = Integer.parseInt(selected.getValueAt(row, 5).toString());
+       int vip = Integer.parseInt(selected.getValueAt(row, 6).toString());
+       js.update(idShow, reg, vip);
     }
 }
